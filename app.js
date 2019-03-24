@@ -74,6 +74,7 @@ app.get("/paypal", (req, res) => {
 });
 
 app.get("/success", (req, res) => {
+    print("we get here");
     var PayerID = req.query.PayerID;
     var paymentId = req.query.paymentId;
     var execute_payment_json = {
