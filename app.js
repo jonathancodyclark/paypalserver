@@ -24,6 +24,9 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+const url = "ec2-18-191-173-246.us-east-2.compute.amazonaws.com:3000";
+const localurl = "http://localhost:3000"
+
 app.get("/paypal", (req, res) => {
     var create_payment_json = {
         intent: "sale",
@@ -31,8 +34,8 @@ app.get("/paypal", (req, res) => {
             payment_method: "paypal"
         },
         redirect_urls: {
-            return_url: "http://localhost:3000/success",
-            cancel_url: "http://localhost:3000/cancel"
+            return_url: url + "/success",
+            cancel_url: url + "/cancel"
         },
         transactions: [
             {
