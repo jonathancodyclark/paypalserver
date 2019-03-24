@@ -83,7 +83,7 @@ app.get("/success", (req, res) => {
             {
                 amount: {
                     currency: "USD",
-                    total: "1.25"
+                    total: "1.00"
                 }
             }
         ]
