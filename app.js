@@ -74,7 +74,7 @@ app.get("/paypal", (req, res) => {
 });
 
 app.get("/success", (req, res) => {
-    print("we get here");
+    console.log("reached /success URI");
     var PayerID = req.query.PayerID;
     var paymentId = req.query.paymentId;
     var execute_payment_json = {
@@ -107,7 +107,8 @@ app.get("/success", (req, res) => {
     });
 });
 
-app.get("cancel", (req, res) => {
+app.get("/cancel", (req, res) => {
+    console.log("reached /cancel URI");
     res.render("cancel");
 });
 
@@ -116,6 +117,7 @@ app.listen(3000, () => {
 });
 
 function payout() {
+    console.log("reached payout");
     var sender_batch_id = Math.random().toString(36).substring(9);
 
     var create_payout_json = {
