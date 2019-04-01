@@ -28,10 +28,12 @@ const url = "http://ec2-52-15-55-149.us-east-2.compute.amazonaws.com:3000";
 const localurl = "http://localhost:3000"
 
 app.get("/paypal", (req, res) => {
-    console.log(req);
+    //console.log(req);
+    console.log("--------------");
+    console.log(req.document);
+    console.log("--------------");
     //price = document.getElementById("price").value;
     //fundraiseremail = document.getElementById("fundraiseremail").value;
-
     var create_payment_json = {
         intent: "sale",
         payer: {
