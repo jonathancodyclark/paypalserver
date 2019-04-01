@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 const url = "http://ec2-52-15-55-149.us-east-2.compute.amazonaws.com:3000";
 const localurl = "http://localhost:3000"
 
-app.get("/paypal", (req, res) => {
+app.post("/paypal", (req, res) => {
     console.log("--------------");
     console.log(req.body);
     console.log("--------------");
