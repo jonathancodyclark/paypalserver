@@ -28,9 +28,8 @@ const url = "http://ec2-52-15-55-149.us-east-2.compute.amazonaws.com:3000";
 const localurl = "http://localhost:3000"
 
 app.get("/paypal", (req, res) => {
-    //console.log(req);
     console.log("--------------");
-    console.log(req.document);
+    console.log(req);
     console.log("--------------");
     //price = document.getElementById("price").value;
     //fundraiseremail = document.getElementById("fundraiseremail").value;
@@ -72,7 +71,7 @@ app.get("/paypal", (req, res) => {
             throw error;
         } else {
             console.log("Create Payment Response");
-            console.log(payment);
+            //console.log(payment);
             //links[1].href is where we redirect user for payment in webview
             res.redirect(payment.links[1].href);
         }
