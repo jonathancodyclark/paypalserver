@@ -29,7 +29,7 @@ const localurl = "http://localhost:3000"
 
 app.get("/paypal", (req, res) => {
     console.log("--------------");
-    console.log(req.query.fundraiseremail);
+    console.log(req.query);
     console.log(req.query.price);
     console.log("--------------");
     //price = document.getElementById("price").value;
