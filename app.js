@@ -27,9 +27,10 @@ app.get("/", (req, res) => {
 const url = "http://ec2-52-15-55-149.us-east-2.compute.amazonaws.com:3000";
 const localurl = "http://localhost:3000"
 
-app.post("/paypal", (req, res) => {
+app.get("/paypal", (req, res) => {
     console.log("--------------");
-    console.log(req.body);
+    console.log(res.query.fundraiseremail);
+    console.log(req.query.price);
     console.log("--------------");
     //price = document.getElementById("price").value;
     //fundraiseremail = document.getElementById("fundraiseremail").value;
