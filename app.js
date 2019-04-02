@@ -29,7 +29,6 @@ const localurl = "http://localhost:3000"
 
 app.post("/paypal", (req, res) => {
     console.log("--------------");
-    console.log(req.params);
     console.log(req.body);
     console.log("--------------");
     //price = document.getElementById("price").value;
@@ -50,7 +49,7 @@ app.post("/paypal", (req, res) => {
                         {
                             name: "item",
                             sku: "item",
-                            price: "1.00",
+                            price: req.body.price,
                             currency: "USD",
                             quantity: 1
                         }
