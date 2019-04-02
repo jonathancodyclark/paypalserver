@@ -4,13 +4,14 @@ const engines = require("consolidate");
 const paypal = require("paypal-rest-sdk");
 
 const app = express();
+app.use(urlencoded());
 
 app.engine("ejs", engines.ejs);
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: true }));
 
 paypal.configure({
     mode: "sandbox", //sandbox or live
@@ -27,10 +28,10 @@ app.get("/", (req, res) => {
 const url = "http://ec2-52-15-55-149.us-east-2.compute.amazonaws.com:3000";
 const localurl = "http://localhost:3000"
 
-app.get("/paypal", (req, res) => {
+app.post("/paypal", (req, res) => {
     console.log("--------------");
     console.log(req.params);
-    console.log(req.query.price);
+    console.log(req.body);
     console.log("--------------");
     //price = document.getElementById("price").value;
     //fundraiseremail = document.getElementById("fundraiseremail").value;
