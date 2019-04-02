@@ -31,6 +31,9 @@ app.post("/paypal", (req, res) => {
     console.log("--------------");
     console.log(req.body);
     console.log("--------------");
+    var price = req.body.price;
+    console.log(price);
+    console.log(typeof(price));
     //price = document.getElementById("price").value;
     //fundraiseremail = document.getElementById("fundraiseremail").value;
     var create_payment_json = {
