@@ -4,14 +4,13 @@ const engines = require("consolidate");
 const paypal = require("paypal-rest-sdk");
 
 const app = express();
-app.use(urlencoded());
 
 app.engine("ejs", engines.ejs);
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 paypal.configure({
     mode: "sandbox", //sandbox or live
