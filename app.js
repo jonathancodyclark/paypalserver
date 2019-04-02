@@ -12,6 +12,9 @@ app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var price;
+var destination;
+
 paypal.configure({
     mode: "sandbox", //sandbox or live
     client_id:
@@ -31,8 +34,8 @@ app.post("/paypal", (req, res) => {
     console.log("--------------");
     console.log(req.body);
     console.log("--------------");
-    var price = req.body.price;
-    var destination = req.body.fundraiseremail;
+    price = req.body.price;
+    destination = req.body.fundraiseremail;
     var create_payment_json = {
         intent: "sale",
         payer: {
@@ -71,7 +74,6 @@ app.post("/paypal", (req, res) => {
             throw error;
         } else {
             console.log("Create Payment Response");
-            //console.log(payment);
             //links[1].href is where we redirect user for payment in webview
             res.redirect(payment.links[1].href);
         }
@@ -88,7 +90,7 @@ app.get("/success", (req, res) => {
             {
                 amount: {
                     currency: "USD",
-                    total: "1.00"
+                    total: price
                 }
             }
         ]
@@ -134,10 +136,10 @@ function payout() {
             {
                 "recipient_type": "EMAIL",
                 "amount": {
-                    "value": 1.00,
+                    "value": price,
                     "currency": "USD"
                 },
-                "receiver": "jcclark43-buyer2@gmail.com",
+                "receiver": destination,
                 "note": "Thank you.",
                 "sender_item_id": "item_1"
             }
