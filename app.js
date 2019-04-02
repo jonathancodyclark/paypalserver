@@ -32,10 +32,7 @@ app.post("/paypal", (req, res) => {
     console.log(req.body);
     console.log("--------------");
     var price = req.body.price;
-    console.log(price);
-    console.log(typeof(price));
-    //price = document.getElementById("price").value;
-    //fundraiseremail = document.getElementById("fundraiseremail").value;
+    var destination = req.body.fundraiseremail;
     var create_payment_json = {
         intent: "sale",
         payer: {
@@ -52,7 +49,7 @@ app.post("/paypal", (req, res) => {
                         {
                             name: "item",
                             sku: "item",
-                            price: req.body.price,
+                            price: price,
                             currency: "USD",
                             quantity: 1
                         }
@@ -60,7 +57,7 @@ app.post("/paypal", (req, res) => {
                 },
                 amount: {
                     currency: "USD",
-                    total: "1.00"
+                    total: price
                 },
                 description: "This is the payment description."
             }
