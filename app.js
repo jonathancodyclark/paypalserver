@@ -151,7 +151,6 @@ function payout() {
             console.log(error.response);
             var errorstring= "Fundraiser Email does not correspond to a Paypal account"
             console.log(errorstring)
-            res.render("cancel", {error: errorstring})
         } else {
             console.log("Create Payout Response");
             console.log(payout);
