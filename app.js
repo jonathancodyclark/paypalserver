@@ -100,9 +100,9 @@ app.get("/success", (req, res) => {
         error,
         payment
     ) {
+        
         if (error) {
             console.log(error.response);
-            throw error;
         } else {
             console.log("Get Payment Response");
             console.log(JSON.stringify(payment));
@@ -149,7 +149,9 @@ function payout() {
     paypal.payout.create(create_payout_json, function (error, payout) {
         if (error) {
             console.log(error.response);
-            throw error;
+            var errorstring= "Fundraiser Email does not correspond to a Paypal account"
+            console.log(errorstring)
+            res.render("cancel", {error: errorstring})
         } else {
             console.log("Create Payout Response");
             console.log(payout);
